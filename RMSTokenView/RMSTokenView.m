@@ -190,6 +190,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
         for (UIButton *tokenButton in self.tokenViews) {
             if ([[tokenButton titleForState:UIControlStateNormal] isEqualToString:tokenText]) {
                 self.selectedToken = tokenButton;
+                break;
             }
         }
 
@@ -200,7 +201,10 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     }
 
     for (UIButton *tokenView in self.tokenViews) {
-        tokenView.selected = (tokenView == self.selectedToken);
+        BOOL selected = (tokenView == self.selectedToken);
+        if (tokenView.selected != selected) {
+            tokenView.selected = selected;
+        }
     }
 
     if (tokenText && [self.tokenDelegate respondsToSelector:@selector(tokenView:didSelectTokenWithText:)]) {
@@ -530,7 +534,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     /* Draw Fill Gradient */
-    CGContextAddPath(context, CGPathCreateWithRoundedRect(rect, 13, 12, NULL));
+    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:12].CGPath);
     CGContextClip(context);
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -544,7 +548,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
     
     /* Draw Stroke */
-    CGContextAddPath(context, CGPathCreateWithRoundedRect(CGRectInset(rect, 0.2, 0.2), 13, 12, NULL));
+    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, 0.2, 0.2) cornerRadius:12].CGPath);
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetLineWidth(context, 0.5);
     CGContextStrokePath(context);
