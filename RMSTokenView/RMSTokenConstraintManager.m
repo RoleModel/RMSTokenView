@@ -82,7 +82,7 @@ RMSTokenConstraintManager *sharedManager;
     for (NSArray *line in tokenLines) {
         for (UIView *tokenView in line) {
             if (!lastView) {
-                [self.updatingConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-6-[tokenView]->=6-|" options:(NSLayoutFormatOptions)0 metrics:nil views:NSDictionaryOfVariableBindings(tokenView)]];
+                [self.updatingConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[tokenView]->=6-|" options:(NSLayoutFormatOptions)0 metrics:nil views:NSDictionaryOfVariableBindings(tokenView)]];
             } else {
                 [self.updatingConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[lastView]-6-[tokenView]" options:(NSLayoutFormatOptions)0 metrics:nil views:NSDictionaryOfVariableBindings(tokenView, lastView)]];
             }

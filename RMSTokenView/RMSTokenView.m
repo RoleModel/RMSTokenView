@@ -147,6 +147,10 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     }
     
     self.text = nil;
+    
+    if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didAddTokenWithText:)]) {
+        [self.tokenDelegate tokenView:self didAddTokenWithText:tokenText];
+    }
 
     [self updateSummary];
     [self resetLines];
