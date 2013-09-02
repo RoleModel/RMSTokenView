@@ -7,7 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "RMSTokenView.h"
+@class RMSTokenView;
 
 @interface RMSTokenConstraintManager : NSObject
 

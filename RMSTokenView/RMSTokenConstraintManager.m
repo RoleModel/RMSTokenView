@@ -7,6 +7,7 @@
 
 
 #import "RMSTokenConstraintManager.h"
+#import "RMSTokenView.h"
 
 const CGFloat RMSTokenLineHeight = 43;
 RMSTokenConstraintManager *sharedManager;
