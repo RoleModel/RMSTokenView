@@ -23,6 +23,13 @@
 		1C9ACDF017D243B200581B8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9ACDCB17D243B100581B8F /* Foundation.framework */; };
 		1C9ACDF817D243B200581B8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACDF617D243B200581B8F /* InfoPlist.strings */; };
 		1C9ACDFB17D243B200581B8F /* RMSTokenViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9ACDFA17D243B200581B8F /* RMSTokenViewTests.m */; };
+		1C9ACE0817D28D6200581B8F /* recipient-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACE0417D28D6200581B8F /* recipient-selected.png */; };
+		1C9ACE0917D28D6200581B8F /* recipient-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACE0517D28D6200581B8F /* recipient-selected@2x.png */; };
+		1C9ACE0A17D28D6200581B8F /* recipient.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACE0617D28D6200581B8F /* recipient.png */; };
+		1C9ACE0B17D28D6200581B8F /* recipient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACE0717D28D6200581B8F /* recipient@2x.png */; };
+		1CE61D7A17D245500074FE6F /* RMSTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE61D7917D245500074FE6F /* RMSTokenView.m */; };
+		1CE61D7B17D245500074FE6F /* RMSTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE61D7917D245500074FE6F /* RMSTokenView.m */; };
+		C68B7213183052C9AECBC851 /* RMSTokenConstraintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +65,14 @@
 		1C9ACDF717D243B200581B8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1C9ACDF917D243B200581B8F /* RMSTokenViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMSTokenViewTests.h; sourceTree = "<group>"; };
 		1C9ACDFA17D243B200581B8F /* RMSTokenViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSTokenViewTests.m; sourceTree = "<group>"; };
+		1C9ACE0417D28D6200581B8F /* recipient-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recipient-selected.png"; sourceTree = "<group>"; };
+		1C9ACE0517D28D6200581B8F /* recipient-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recipient-selected@2x.png"; sourceTree = "<group>"; };
+		1C9ACE0617D28D6200581B8F /* recipient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipient.png; sourceTree = "<group>"; };
+		1C9ACE0717D28D6200581B8F /* recipient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recipient@2x.png"; sourceTree = "<group>"; };
+		1CE61D7817D245500074FE6F /* RMSTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTokenView.h; sourceTree = "<group>"; };
+		1CE61D7917D245500074FE6F /* RMSTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTokenView.m; sourceTree = "<group>"; };
+		C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTokenConstraintManager.m; sourceTree = "<group>"; };
+		C68B73B0C50BDDF7CA6B81A5 /* RMSTokenConstraintManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTokenConstraintManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +137,11 @@
 				1C9ACDE117D243B200581B8F /* MainStoryboard.storyboard */,
 				1C9ACDE417D243B200581B8F /* RMSViewController.h */,
 				1C9ACDE517D243B200581B8F /* RMSViewController.m */,
+				1CE61D7817D245500074FE6F /* RMSTokenView.h */,
+				1CE61D7917D245500074FE6F /* RMSTokenView.m */,
 				1C9ACDD017D243B100581B8F /* Supporting Files */,
+				C68B73B0C50BDDF7CA6B81A5 /* RMSTokenConstraintManager.h */,
+				C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */,
 			);
 			path = RMSTokenView;
 			sourceTree = "<group>";
@@ -130,6 +149,10 @@
 		1C9ACDD017D243B100581B8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1C9ACE0417D28D6200581B8F /* recipient-selected.png */,
+				1C9ACE0517D28D6200581B8F /* recipient-selected@2x.png */,
+				1C9ACE0617D28D6200581B8F /* recipient.png */,
+				1C9ACE0717D28D6200581B8F /* recipient@2x.png */,
 				1C9ACDD117D243B100581B8F /* RMSTokenView-Info.plist */,
 				1C9ACDD217D243B100581B8F /* InfoPlist.strings */,
 				1C9ACDD517D243B100581B8F /* main.m */,
@@ -237,6 +260,10 @@
 				1C9ACDDE17D243B200581B8F /* Default@2x.png in Resources */,
 				1C9ACDE017D243B200581B8F /* Default-568h@2x.png in Resources */,
 				1C9ACDE317D243B200581B8F /* MainStoryboard.storyboard in Resources */,
+				1C9ACE0817D28D6200581B8F /* recipient-selected.png in Resources */,
+				1C9ACE0917D28D6200581B8F /* recipient-selected@2x.png in Resources */,
+				1C9ACE0A17D28D6200581B8F /* recipient.png in Resources */,
+				1C9ACE0B17D28D6200581B8F /* recipient@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +301,8 @@
 				1C9ACDD617D243B100581B8F /* main.m in Sources */,
 				1C9ACDDA17D243B200581B8F /* RMSAppDelegate.m in Sources */,
 				1C9ACDE617D243B200581B8F /* RMSViewController.m in Sources */,
+				1CE61D7A17D245500074FE6F /* RMSTokenView.m in Sources */,
+				C68B7213183052C9AECBC851 /* RMSTokenConstraintManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C9ACDFB17D243B200581B8F /* RMSTokenViewTests.m in Sources */,
+				1CE61D7B17D245500074FE6F /* RMSTokenView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +484,7 @@
 				1C9ACE0017D243B200581B8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1C9ACE0117D243B200581B8F /* Build configuration list for PBXNativeTarget "RMSTokenViewTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +493,7 @@
 				1C9ACE0317D243B200581B8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
