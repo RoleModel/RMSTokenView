@@ -43,6 +43,7 @@
 - (void)tokenView:(RMSTokenView *)tokenView didRemoveTokenWithText:(NSString *)text;
 
 - (BOOL)tokenView:(RMSTokenView *)tokenView shouldAddTokenWithText:(NSString *)text;
+- (NSString *)tokenView:(RMSTokenView *)tokenView willPresentTokenWithText:(NSString *)text;
 
 - (void)tokenView:(RMSTokenView *)tokenView didChangeText:(NSString *)text;
 - (void)tokenView:(RMSTokenView *)tokenView didUpdateSummary:(NSString *)summary;

@@ -120,7 +120,14 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
             return;
         }
     }
-    
+
+    if ([self.tokenDelegate respondsToSelector:@selector(tokenView:willPresentTokenWithText:)]) {
+        NSString *transformedText = [self.tokenDelegate tokenView:self willPresentTokenWithText:tokenText];
+        if (transformedText) {
+            tokenText = transformedText;
+        }
+    }
+
     UIButton *tokenView = [UIButton buttonWithType:UIButtonTypeCustom];
     tokenView.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
     tokenView.adjustsImageWhenHighlighted = NO;
