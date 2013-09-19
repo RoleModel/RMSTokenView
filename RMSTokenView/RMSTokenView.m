@@ -9,6 +9,9 @@
 #import "RMSTokenView.h"
 #import "RMSTokenConstraintManager.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define iOS_7_OR_LATER SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
+
 void *RMSTokenSelectionContext = &RMSTokenSelectionContext;
 NSString *RMSBackspaceUnicodeString = @"\u200B";
 
@@ -18,8 +21,6 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
 
 @property (nonatomic, strong) UILabel *summaryLabel;
 
-@property (nonatomic, strong) NSArray *contentConstraints;
-
 @property (nonatomic, strong) NSMutableArray *tokenViews;
 @property (nonatomic, strong) NSMutableArray *tokenLines;
 @property (nonatomic, strong) UIButton *selectedToken;
@@ -27,6 +28,10 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
 @property (nonatomic) CGSize lastKnownSize;
 
 @property (nonatomic, strong) RMSTokenConstraintManager *constraintManager;
+
+#pragma mark - Token View
+@property (nonatomic) CGFloat tokenViewBorderRadius;
+@property (nonatomic) BOOL needsGradient;
 
 @end
 
@@ -51,6 +56,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
 }
 
 - (void)initialize {
+    [self setupVersionSpecificProperties];
     if (CGRectIsEmpty(self.frame)) {
         self.frame = CGRectMake(0, 0, 320, 44);
     }
@@ -545,21 +551,26 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     /* Draw Fill Gradient */
-    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:12].CGPath);
+    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:self.tokenViewBorderRadius].CGPath);
     CGContextClip(context);
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = { 0.0, 1.0 };
-    NSArray *colors = @[(__bridge id)topColor.CGColor, (__bridge id)bottomColor.CGColor];
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
-    
-    CGPoint startPoint = CGPointMake(rect.size.width / 2.0, 0);
-    CGPoint endPoint = CGPointMake(rect.size.width / 2.0, rect.size.height);
-    
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+
+    if (self.needsGradient) {
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGFloat locations[] = {0.0, 1.0};
+        NSArray *colors = @[(__bridge id)topColor.CGColor, (__bridge id)bottomColor.CGColor];
+        CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
+
+        CGPoint startPoint = CGPointMake(rect.size.width / 2.0, 0);
+        CGPoint endPoint = CGPointMake(rect.size.width / 2.0, rect.size.height);
+
+        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    } else {
+        CGContextSetFillColorWithColor(context, topColor.CGColor);
+        UIRectFill(rect);
+    }
     
     /* Draw Stroke */
-    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, 0.2, 0.2) cornerRadius:12].CGPath);
+    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, 0.2, 0.2) cornerRadius:self.tokenViewBorderRadius].CGPath);
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetLineWidth(context, 0.5);
     CGContextStrokePath(context);
@@ -567,6 +578,15 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
+}
+
+- (void)setupVersionSpecificProperties {
+    self.needsGradient = !iOS_7_OR_LATER;
+    if (iOS_7_OR_LATER) {
+        self.tokenViewBorderRadius = 7;
+    } else {
+        self.tokenViewBorderRadius = 12;
+    }
 }
 
 #pragma mark - Accessors
