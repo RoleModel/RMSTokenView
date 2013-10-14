@@ -16,7 +16,6 @@
 		1C9ACDDC17D243B200581B8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACDDB17D243B200581B8F /* Default.png */; };
 		1C9ACDDE17D243B200581B8F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACDDD17D243B200581B8F /* Default@2x.png */; };
 		1C9ACDE017D243B200581B8F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACDDF17D243B200581B8F /* Default-568h@2x.png */; };
-		1C9ACDE317D243B200581B8F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C9ACDE117D243B200581B8F /* MainStoryboard.storyboard */; };
 		1C9ACDE617D243B200581B8F /* RMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9ACDE517D243B200581B8F /* RMSViewController.m */; };
 		1C9ACDEE17D243B200581B8F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9ACDED17D243B200581B8F /* SenTestingKit.framework */; };
 		1C9ACDEF17D243B200581B8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9ACDC917D243B100581B8F /* UIKit.framework */; };
@@ -25,6 +24,7 @@
 		1C9ACDFB17D243B200581B8F /* RMSTokenViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9ACDFA17D243B200581B8F /* RMSTokenViewTests.m */; };
 		1CE61D7A17D245500074FE6F /* RMSTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE61D7917D245500074FE6F /* RMSTokenView.m */; };
 		1CE61D7B17D245500074FE6F /* RMSTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE61D7917D245500074FE6F /* RMSTokenView.m */; };
+		1CEF0C42180C4B4B00F2532F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEF0C41180C4B4B00F2532F /* Main.storyboard */; };
 		C68B7213183052C9AECBC851 /* RMSTokenConstraintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,6 @@
 		1C9ACDDB17D243B200581B8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1C9ACDDD17D243B200581B8F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1C9ACDDF17D243B200581B8F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1C9ACDE217D243B200581B8F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1C9ACDE417D243B200581B8F /* RMSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMSViewController.h; sourceTree = "<group>"; };
 		1C9ACDE517D243B200581B8F /* RMSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSViewController.m; sourceTree = "<group>"; };
 		1C9ACDEC17D243B200581B8F /* RMSTokenViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMSTokenViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +62,7 @@
 		1C9ACDFA17D243B200581B8F /* RMSTokenViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSTokenViewTests.m; sourceTree = "<group>"; };
 		1CE61D7817D245500074FE6F /* RMSTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTokenView.h; sourceTree = "<group>"; };
 		1CE61D7917D245500074FE6F /* RMSTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTokenView.m; sourceTree = "<group>"; };
+		1CEF0C41180C4B4B00F2532F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTokenConstraintManager.m; sourceTree = "<group>"; };
 		C68B73B0C50BDDF7CA6B81A5 /* RMSTokenConstraintManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTokenConstraintManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +126,7 @@
 			children = (
 				1C9ACDD817D243B100581B8F /* RMSAppDelegate.h */,
 				1C9ACDD917D243B100581B8F /* RMSAppDelegate.m */,
-				1C9ACDE117D243B200581B8F /* MainStoryboard.storyboard */,
+				1CEF0C41180C4B4B00F2532F /* Main.storyboard */,
 				1C9ACDE417D243B200581B8F /* RMSViewController.h */,
 				1C9ACDE517D243B200581B8F /* RMSViewController.m */,
 				1CE61D7817D245500074FE6F /* RMSTokenView.h */,
@@ -246,8 +246,8 @@
 				1C9ACDD417D243B100581B8F /* InfoPlist.strings in Resources */,
 				1C9ACDDC17D243B200581B8F /* Default.png in Resources */,
 				1C9ACDDE17D243B200581B8F /* Default@2x.png in Resources */,
+				1CEF0C42180C4B4B00F2532F /* Main.storyboard in Resources */,
 				1C9ACDE017D243B200581B8F /* Default-568h@2x.png in Resources */,
-				1C9ACDE317D243B200581B8F /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +316,6 @@
 				1C9ACDD317D243B100581B8F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1C9ACDE117D243B200581B8F /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C9ACDE217D243B200581B8F /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		1C9ACDF617D243B200581B8F /* InfoPlist.strings */ = {

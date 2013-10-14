@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BRA-6O-req">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - RMSTokenView-->
+        <scene sceneID="KzI-11-sFm">
+            <objects>
+                <viewController id="ZWX-Pu-DxJ" customClass="RMSViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N1n-B0-5dQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qab-n2-xTO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VsK-3E-ajc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-UV-bvF" customClass="RMSTokenView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="tU6-CP-8oD"/>
+                                    <constraint firstAttribute="width" constant="320" id="uR7-pe-yUn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="tU6-CP-8oD" id="J1f-z6-VKT"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H3J-UV-bvF" firstAttribute="top" secondItem="VsK-3E-ajc" secondAttribute="top" constant="64" id="XLk-Ox-XtF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="RMSTokenView" id="vax-lM-dfx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQk-LL-QIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="-59"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NZX-Lo-BHg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZC-ZH-qKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BRA-6O-req" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A2D-fg-9Z8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZWX-Pu-DxJ" kind="relationship" relationship="rootViewController" id="Rkv-rp-5Op"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="212" y="-59"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
