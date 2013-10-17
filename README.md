@@ -3,7 +3,7 @@ RMSTokenView
 
 RMSTokenView is a text-field like view that handles tokens as seen in the Mail app. It was inspired and reworked from [davbeck/TURecipient](https://github.com/davbeck/TURecipientBar).
 
-![RMSTokenView](https://dl.dropboxusercontent.com/u/20180054/RoleModel%20Resources/rms-token-view.gif)
+![RMSTokenView](https://f.cloud.github.com/assets/634167/1355622/e76aa6cc-3769-11e3-9d88-82d9be6534b7.gif)
 
 # Usage - CocoaPods
 
