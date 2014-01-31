@@ -234,6 +234,20 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     }
 }
 
+- (void)removeAllTokens {
+    [self.tokenViews enumerateObjectsUsingBlock:^(UIButton *buttonToRemove, NSUInteger idx, BOOL *stop) {
+        [buttonToRemove removeFromSuperview];
+        if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didRemoveTokenWithText:)]) {
+            [self.tokenDelegate tokenView:self didRemoveTokenWithText:buttonToRemove.titleLabel.text];
+        }
+    }];
+    
+    [self.tokenViews removeAllObjects];
+    
+    [self updateSummary];
+    [self resetLines];
+}
+
 - (void)updateTextField {
     self.textField.hidden = (self.selectedToken || ![self.textField isFirstResponder]);
 }
