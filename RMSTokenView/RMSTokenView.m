@@ -113,6 +113,11 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewSelected:)]];
 }
 
+- (void)dealloc {
+    self.textField.delegate = nil;
+    [self.textField removeObserver:self forKeyPath:@"selectedTextRange" context:RMSTokenSelectionContext];
+}
+
 #pragma mark - Actions
 
 - (void)addTokenWithText:(NSString *)tokenText {
