@@ -28,6 +28,7 @@
 - (void)addTokenWithText:(NSString *)tokenText;
 - (void)removeTokenWithText:(NSString *)tokenText;
 - (void)selectTokenWithText:(NSString *)tokenText;
+- (void)removeAllTokens;
 
 - (void)setSearching:(BOOL)searching animated:(BOOL)animated;
 
