@@ -30,7 +30,6 @@ RMSTokenConstraintManager *sharedManager;
     if (!heightConstraint) {
         self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.tokenView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:RMSTokenLineHeight + 1];
         [self.tokenView addConstraint:self.heightConstraint];
-        heightConstraint = self.heightConstraint;
     } else {
         self.heightConstraint = heightConstraint;
     }
