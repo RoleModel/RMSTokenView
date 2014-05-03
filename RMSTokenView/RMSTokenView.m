@@ -583,6 +583,9 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
         CGPoint endPoint = CGPointMake(rect.size.width / 2.0, rect.size.height);
 
         CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+
+        CGGradientRelease(gradient);
+        CGColorSpaceRelease(colorSpace);
     } else {
         CGContextSetFillColorWithColor(context, topColor.CGColor);
         UIRectFill(rect);
