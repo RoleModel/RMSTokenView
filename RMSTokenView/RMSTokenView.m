@@ -445,6 +445,8 @@
     }
     if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didChangeText:)]) {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        // we call the delegate method on a dispatch queue in case it tries to
+        // do something that would update the textField (e.g., adding a token).
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tokenDelegate tokenView:self didChangeText:text];
         });
