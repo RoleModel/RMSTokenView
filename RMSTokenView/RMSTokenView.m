@@ -434,17 +434,14 @@
 
 #pragma mark - Text Field Delegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-
-    [self setSearching:([self.text length] > 0) animated:YES];
-
-
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didChangeText:)]) {
-        [self.tokenDelegate tokenView:self didChangeText:self.text];
+        NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        [self.tokenDelegate tokenView:self didChangeText:text];
     }
-    
     return YES;
 }
+
 
 - (void)manuallyChangeTextField:(UITextField *)textField inRange:(NSRange)range replacementString:(NSString *)string {
     // Set the cursor to be the original offset distance from the last token
