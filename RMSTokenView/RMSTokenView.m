@@ -437,7 +437,9 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didChangeText:)]) {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        [self.tokenDelegate tokenView:self didChangeText:text];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tokenDelegate tokenView:self didChangeText:text];
+        });
     }
     return YES;
 }
