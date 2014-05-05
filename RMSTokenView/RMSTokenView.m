@@ -115,12 +115,16 @@
 }
 
 - (void)didDeleteBackward:(UITextField *)textField {
-    UIButton *selectedToken = self.selectedToken;
-    if (selectedToken) {
-        [self removeTokenWithText:[selectedToken titleForState:UIControlStateNormal]];
+    if (self.selectedToken) {
+        [self removeTokenWithText:[self.selectedToken titleForState:UIControlStateNormal]];
         [self selectTokenWithText:nil];
-    } else if (self.textField.text.length == 0 && self.tokens.count) {
-        [self selectLastToken];
+    } else if (self.tokens.count) {
+        if (textField.text.length == 0 ||
+            (textField.selectedTextRange.empty &&
+             [textField offsetFromPosition:textField.beginningOfDocument
+                                toPosition:textField.selectedTextRange.start] == 0)) {
+                [self selectLastToken];
+            }
     }
 }
 
@@ -446,17 +450,6 @@
         });
     }
     return YES;
-}
-
-
-- (void)manuallyChangeTextField:(UITextField *)textField inRange:(NSRange)range replacementString:(NSString *)string {
-    // Set the cursor to be the original offset distance from the last token
-    NSInteger offset = [textField offsetFromPosition:textField.selectedTextRange.end toPosition:textField.endOfDocument];
-
-    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-
-    UITextPosition *newEnd = [textField positionFromPosition:textField.endOfDocument inDirection:UITextLayoutDirectionLeft offset:offset];
-    textField.selectedTextRange = [textField textRangeFromPosition:newEnd toPosition:newEnd];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
