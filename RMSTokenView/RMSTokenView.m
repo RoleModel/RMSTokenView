@@ -12,9 +12,6 @@
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define iOS_7_OR_LATER SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
 
-void *RMSTokenSelectionContext = &RMSTokenSelectionContext;
-NSString *RMSBackspaceUnicodeString = @"\u200B";
-
 @interface RMSTokenView()
 @property (nonatomic, strong) UIView *content;
 @property (nonatomic, strong) UIView *lineView;
@@ -93,16 +90,16 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     [self.content addSubview:self.lineView];
     [self.constraintManager setupLineViewConstraints:self.lineView];
 
-    self.textField = [[UITextField alloc] init];
-    self.textField.text = RMSBackspaceUnicodeString;
-    self.textField.delegate = self;
-    self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [self.textField addObserver:self forKeyPath:@"selectedTextRange" options:0 context:RMSTokenSelectionContext];
-    [self.content addSubview:self.textField];
-    [self.constraintManager setupConstraintsOnTextField:self.textField];
-    [[self.tokenLines lastObject] addObject:self.textField];
+    RMSTextField *textField = [[RMSTextField alloc] init];
+    textField.backspaceDelegate = self;
+    textField.delegate = self;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.textField = textField;
+    [self.content addSubview:textField];
+    [self.constraintManager setupConstraintsOnTextField:textField];
+    [[self.tokenLines lastObject] addObject:textField];
 
     self.summaryLabel = [[UILabel alloc] init];
     self.summaryLabel.backgroundColor = [UIColor clearColor];
@@ -111,11 +108,21 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     [self.constraintManager setupConstraintsOnSummaryLabel:self.summaryLabel];
 
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewSelected:)]];
+    self.placeholder = @"foo bar baz";
 }
 
 - (void)dealloc {
     self.textField.delegate = nil;
-    [self.textField removeObserver:self forKeyPath:@"selectedTextRange" context:RMSTokenSelectionContext];
+}
+
+- (void)didDeleteBackward:(UITextField *)textField {
+    UIButton *selectedToken = self.selectedToken;
+    if (selectedToken) {
+        [self removeTokenWithText:[selectedToken titleForState:UIControlStateNormal]];
+        [self selectTokenWithText:nil];
+    } else if (self.textField.text.length == 0 && self.tokens.count) {
+        [self selectLastToken];
+    }
 }
 
 #pragma mark - Actions
@@ -170,6 +177,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
         [self.tokenDelegate tokenView:self didAddTokenWithText:tokenText];
     }
 
+    [self updatePlaceholder];
     [self updateSummary];
     [self resetLines];
 }
@@ -179,10 +187,11 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     for (UIButton *tokenButton in self.tokenViews) {
         if ([[tokenButton titleForState:UIControlStateNormal] isEqualToString:tokenText]) {
             buttonToRemove = tokenButton;
+            break;
         }
     }
 
-    if (!!buttonToRemove) {
+    if (buttonToRemove != nil) {
         [buttonToRemove removeFromSuperview];
         [self.tokenViews removeObject:buttonToRemove];
 
@@ -190,6 +199,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
             [self.tokenDelegate tokenView:self didRemoveTokenWithText:tokenText];
         }
 
+        [self updatePlaceholder];
         [self updateSummary];
         [self resetLines];
     }
@@ -243,7 +253,8 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     }];
     
     [self.tokenViews removeAllObjects];
-    
+
+    [self updatePlaceholder];
     [self updateSummary];
     [self resetLines];
 }
@@ -425,31 +436,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
 #pragma mark - Text Field Delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if ([[textField.text substringWithRange:range] isEqual:RMSBackspaceUnicodeString]) {
-        /* Select last token */
-        if (self.selectedToken) {
-            [self removeTokenWithText:[self.selectedToken titleForState:UIControlStateNormal]];
-            [self selectTokenWithText:nil];
-        } else if ([self.text length] == 0) {
-            [self selectLastToken];
-        }
-        return NO;
-    } else if (self.selectedToken) {
-        /* Replace selected token */
-        [self removeTokenWithText:[self.selectedToken titleForState:UIControlStateNormal]];
-        [self selectTokenWithText:nil];
-    }
 
-    /* Adjust cursor position */
-    if (range.location < 1) {
-        range.location++;
-
-        if (range.length > 0) {
-            range.length--;
-        }
-    }
-
-    [self manuallyChangeTextField:textField inRange:range replacementString:string];
     [self setSearching:([self.text length] > 0) animated:YES];
 
 
@@ -457,7 +444,7 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
         [self.tokenDelegate tokenView:self didChangeText:self.text];
     }
     
-    return NO;
+    return YES;
 }
 
 - (void)manuallyChangeTextField:(UITextField *)textField inRange:(NSRange)range replacementString:(NSString *)string {
@@ -509,20 +496,6 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
         } completion:nil];
     });
     return YES;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"selectedTextRange"] && object == self.textField) {
-        // We use a backspace character at the start of the field that we don't want the user to select or move the insertion point in front of
-        NSInteger offset = [self.textField offsetFromPosition:self.textField.beginningOfDocument toPosition:self.textField.selectedTextRange.start];
-
-        if (offset < 1) {
-            UITextPosition *newStart = [self.textField positionFromPosition:self.textField.beginningOfDocument offset:1];
-            self.textField.selectedTextRange = [self.textField textRangeFromPosition:newStart toPosition:self.textField.selectedTextRange.end];
-        }
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
 }
 
 #pragma mark - Token Buttons
@@ -611,24 +584,31 @@ NSString *RMSBackspaceUnicodeString = @"\u200B";
     }
 }
 
+- (void) updatePlaceholder {
+    if (self.placeholder) {
+        self.textField.placeholder = self.tokens.count == 0 ? self.placeholder : nil;
+    }
+}
+
 #pragma mark - Accessors
 
 - (void)setText:(NSString *)text
 {
-    if (text != nil) {
-        [self.textField setText:[RMSBackspaceUnicodeString stringByAppendingString:text]];
-    } else {
-        [self.textField setText:RMSBackspaceUnicodeString];
-    }
-    [self setSearching:!!text];
+    self.textField.text = text;
+    self.searching = !!text;
 
     if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didChangeText:)]) {
         [self.tokenDelegate tokenView:self didChangeText:self.text];
     }
 }
 
+- (void)setPlaceholder:(NSString *)placeholder {
+    _placeholder = placeholder;
+    [self updatePlaceholder];
+}
+
 - (NSString *)text {
-    return [[self.textField text] stringByReplacingOccurrencesOfString:RMSBackspaceUnicodeString withString:@""];
+    return self.textField.text;
 }
 
 - (NSArray *)tokens {
