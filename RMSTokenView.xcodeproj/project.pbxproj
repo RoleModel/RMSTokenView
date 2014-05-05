@@ -26,6 +26,7 @@
 		1CE61D7B17D245500074FE6F /* RMSTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE61D7917D245500074FE6F /* RMSTokenView.m */; };
 		1CEF0C42180C4B4B00F2532F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEF0C41180C4B4B00F2532F /* Main.storyboard */; };
 		C68B7213183052C9AECBC851 /* RMSTokenConstraintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */; };
+		CDA30C35191814A6005FE6E5 /* RMSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA30C34191814A6005FE6E5 /* RMSTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		1CEF0C41180C4B4B00F2532F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTokenConstraintManager.m; sourceTree = "<group>"; };
 		C68B73B0C50BDDF7CA6B81A5 /* RMSTokenConstraintManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTokenConstraintManager.h; sourceTree = "<group>"; };
+		CDA30C33191814A6005FE6E5 /* RMSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSTextField.h; sourceTree = "<group>"; };
+		CDA30C34191814A6005FE6E5 /* RMSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				1C9ACDE517D243B200581B8F /* RMSViewController.m */,
 				1CE61D7817D245500074FE6F /* RMSTokenView.h */,
 				1CE61D7917D245500074FE6F /* RMSTokenView.m */,
+				CDA30C33191814A6005FE6E5 /* RMSTextField.h */,
+				CDA30C34191814A6005FE6E5 /* RMSTextField.m */,
 				1C9ACDD017D243B100581B8F /* Supporting Files */,
 				C68B73B0C50BDDF7CA6B81A5 /* RMSTokenConstraintManager.h */,
 				C68B70303BC5A274A77CB18B /* RMSTokenConstraintManager.m */,
@@ -282,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA30C35191814A6005FE6E5 /* RMSTextField.m in Sources */,
 				1C9ACDD617D243B100581B8F /* main.m in Sources */,
 				1C9ACDDA17D243B200581B8F /* RMSAppDelegate.m in Sources */,
 				1C9ACDE617D243B200581B8F /* RMSViewController.m in Sources */,
