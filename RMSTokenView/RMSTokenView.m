@@ -435,6 +435,10 @@
 #pragma mark - Text Field Delegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (self.selectedToken) {
+        [self removeTokenWithText:[self.selectedToken titleForState:UIControlStateNormal]];
+        [self selectTokenWithText:nil];
+    }
     if ([self.tokenDelegate respondsToSelector:@selector(tokenView:didChangeText:)]) {
         NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
         dispatch_async(dispatch_get_main_queue(), ^{
