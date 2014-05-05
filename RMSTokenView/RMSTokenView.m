@@ -108,7 +108,6 @@
     [self.constraintManager setupConstraintsOnSummaryLabel:self.summaryLabel];
 
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewSelected:)]];
-    self.placeholder = @"foo bar baz";
 }
 
 - (void)dealloc {
