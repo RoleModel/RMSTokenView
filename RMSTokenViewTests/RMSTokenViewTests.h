@@ -8,6 +8,8 @@
 
 #import <KIF/KIF.h>
 
-@interface RMSTokenViewTests : KIFTestCase
+@class RMSTokenView;
 
+@interface RMSTokenViewTests : KIFTestCase
+@property (nonatomic, strong) RMSTokenView *tokenView;
 @end
