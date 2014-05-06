@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RMSTextField.h"
+
 @protocol RMSTokenDelegate;
 
 
-@interface RMSTokenView : UIScrollView<UITextFieldDelegate>
+@interface RMSTokenView : UIScrollView<UITextFieldDelegate, BackspaceDelegate>
 
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *placeholder;
 
 @property (nonatomic) BOOL searching;
 
