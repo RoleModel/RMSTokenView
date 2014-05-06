@@ -11,7 +11,9 @@
 @protocol BackspaceDelegate <NSObject>
 
 @optional
-- (void) didDeleteBackward:(UITextField*)textField;
+- (void)willDeleteBackward:(UITextField*)textField;
+- (void)didDeleteBackward:(UITextField*)textField;
+
 @end
 
 

@@ -37,7 +37,7 @@
 }
 
 - (void)testAddingManyTokens {
-    [tester enterTextIntoCurrentFirstResponder:@"Test\nBilly\nBob"];
+    [tester enterTextIntoCurrentFirstResponder:@"Test\nBilly\nBob\n"];
     XCTAssert([self.tokenView.tokens count] == 3, @"multiple tokens should have been added");
     [tester enterTextIntoCurrentFirstResponder:@"\b\b\b\b\b\b\b\b\b\b"];
     XCTAssert([self.tokenView.tokens count] == 0, @"all tokens should have been cleared");
@@ -52,8 +52,17 @@
 
 - (void)testAddingAPlaceholder {
     self.tokenView.placeholder = @"This is a placeholder";
-    [self.tokenView resignFirstResponder];
-    [tester tapViewWithAccessibilityLabel:self.tokenView.placeholder];
+    [tester waitForViewWithAccessibilityLabel:self.tokenView.placeholder];
+
+    // When there are tokens present, the placeholder text is removed
+    [tester enterTextIntoCurrentFirstResponder:@"Test\n"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:self.tokenView.placeholder];
+    XCTAssert(self.tokenView.textField.placeholder == nil, @"the placeholder should have been set to nil");
+
+    // If we delete the last token, the placeholder text is set again
+    [tester enterTextIntoCurrentFirstResponder:@"\b\b"];
+    [tester waitForViewWithAccessibilityLabel:self.tokenView.placeholder];
+    XCTAssert([self.tokenView.textField.placeholder isEqualToString:self.tokenView.placeholder], @"the placeholder should have been set");
 }
 
 @end
