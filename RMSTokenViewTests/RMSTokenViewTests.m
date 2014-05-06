@@ -51,20 +51,18 @@
 }
 
 - (void)testAddingAPlaceholder {
-    NSString *placeholder = @"This is a placeholder";
-    placeholder.accessibilityLabel = @"This is a placeholder";
-    self.tokenView.placeholder = placeholder;
-    [tester waitForViewWithAccessibilityLabel:placeholder];
+    self.tokenView.placeholder = @"This is a placeholder";
+    [tester waitForViewWithAccessibilityLabel:self.tokenView.placeholder];
 
     // When there are tokens present, the placeholder text is removed
     [tester enterTextIntoCurrentFirstResponder:@"Test\n"];
-    [tester waitForAbsenceOfViewWithAccessibilityLabel:placeholder];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:self.tokenView.placeholder];
     XCTAssert(self.tokenView.textField.placeholder == nil, @"the placeholder should have been set to nil");
 
     // If we delete the last token, the placeholder text is set again
     [tester enterTextIntoCurrentFirstResponder:@"\b\b"];
-    [tester waitForViewWithAccessibilityLabel:placeholder];
-    XCTAssert([self.tokenView.textField.placeholder isEqualToString:placeholder], @"the placeholder should have been set");
+    [tester waitForViewWithAccessibilityLabel:self.tokenView.placeholder];
+    XCTAssert([self.tokenView.textField.placeholder isEqualToString:self.tokenView.placeholder], @"the placeholder should have been set");
 }
 
 @end
