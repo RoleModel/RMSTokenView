@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BRA-6O-req">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BRA-6O-req">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller - RMSTokenView-->
@@ -24,6 +24,9 @@
                                     <constraint firstAttribute="height" constant="44" id="tU6-CP-8oD"/>
                                     <constraint firstAttribute="width" constant="320" id="uR7-pe-yUn"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="tokenView"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="heightConstraint" destination="tU6-CP-8oD" id="J1f-z6-VKT"/>
                                 </connections>
@@ -43,7 +46,6 @@
         <!--Navigation Controller-->
         <scene sceneID="NZX-Lo-BHg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZC-ZH-qKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BRA-6O-req" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
@@ -56,6 +58,7 @@
                         <segue destination="ZWX-Pu-DxJ" kind="relationship" relationship="rootViewController" id="Rkv-rp-5Op"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZC-ZH-qKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="212" y="-59"/>
         </scene>

@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author       = { "Christian Di Lorenzo" => "rcddeveloper@icloud.com" }
   s.source       = { :git => "https://github.com/RoleModel/RMSTokenView.git", :tag => s.version.to_s }
   s.platform     = :ios, '6.0'
-  s.source_files = 'RMSTokenView/RMSTokenView.*', 'RMSTokenView/RMSTokenConstraintManager.*'
+  s.source_files = 'RMSTokenView/RMSTokenView.*', 'RMSTokenView/RMSTokenConstraintManager.*', 'RMSTokenView/RMSTextField.*'
   s.requires_arc = true
 end
