@@ -1,0 +1,6 @@
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif
+
+#import "Pods-RMSTokenViewTests-environment.h"
+#import <CoreGraphics/CoreGraphics.h>

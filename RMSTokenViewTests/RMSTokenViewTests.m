@@ -7,6 +7,7 @@
 //
 
 #import "RMSTokenViewTests.h"
+#import "RMSTokenView.h"
 
 @implementation RMSTokenViewTests
 
@@ -24,9 +25,16 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in RMSTokenViewTests");
+- (void)testAddingAndRemovingTokens {
+    RMSTokenView *tokenView = (id)[tester waitForTappableViewWithAccessibilityLabel:@"tokenView"];
+    [tokenView becomeFirstResponder];
+    [tester waitForTimeInterval:1];
+    [tester enterTextIntoCurrentFirstResponder:@"Test\n"];
+    XCTAssert([tokenView.tokens count] == 1, @"a token should have been added");
+    [tester tapViewWithAccessibilityLabel:@"Test"];
+    [tester enterTextIntoCurrentFirstResponder:@"\b"];
+    XCTAssert([tokenView.tokens count] == 0, @"the token should have been removed");
+    [tester waitForTimeInterval:1];
 }
 
 @end

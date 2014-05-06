@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 RoleModel Software. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <KIF/KIF.h>
 
-@interface RMSTokenViewTests : SenTestCase
+@interface RMSTokenViewTests : KIFTestCase
 
 @end
