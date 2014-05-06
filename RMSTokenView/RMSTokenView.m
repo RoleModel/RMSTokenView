@@ -114,7 +114,7 @@
     self.textField.delegate = nil;
 }
 
-- (void)didDeleteBackward:(UITextField *)textField {
+- (void)willDeleteBackward:(UITextField *)textField {
     if (self.selectedToken) {
         [self removeTokenWithText:[self.selectedToken titleForState:UIControlStateNormal]];
         [self selectTokenWithText:nil];

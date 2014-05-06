@@ -11,6 +11,9 @@
 @implementation RMSTextField
 
 - (void)deleteBackward {
+    if ([self.backspaceDelegate respondsToSelector:@selector(willDeleteBackward:)]) {
+        [self.backspaceDelegate willDeleteBackward:self];
+    }
     [super deleteBackward];
     if ([self.backspaceDelegate respondsToSelector:@selector(didDeleteBackward:)]) {
         [self.backspaceDelegate didDeleteBackward:self];
