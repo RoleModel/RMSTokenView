@@ -7,7 +7,7 @@ RMSTokenView is a text-field like view that handles tokens as seen in the Mail a
 
 # Usage - CocoaPods
 
-1. Add to Podfile: ```gem 'RMSTokenView', '>= 1.0.1'```
+1. Add to Podfile: ```pod 'RMSTokenView', '>= 1.0.4'```
 2. ```$ pod install```
 3. Import and use!
 
