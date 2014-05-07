@@ -24,7 +24,7 @@
 @property (nonatomic, strong, readonly) NSString *summary;
 @property (nonatomic, strong, readonly) NSArray *tokens; /* List of NSStrings */
 
-@property (nonatomic, strong) id<RMSTokenDelegate> tokenDelegate;
+@property (nonatomic, weak) IBOutlet id<RMSTokenDelegate> tokenDelegate;
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *heightConstraint;
 
