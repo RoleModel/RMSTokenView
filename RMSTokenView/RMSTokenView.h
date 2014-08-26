@@ -27,6 +27,7 @@
 @property (nonatomic, weak) IBOutlet id<RMSTokenDelegate> tokenDelegate;
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (nonatomic, assign) CGFloat maxHeight;
 
 - (void)addTokenWithText:(NSString *)tokenText;
 - (void)removeTokenWithText:(NSString *)tokenText;

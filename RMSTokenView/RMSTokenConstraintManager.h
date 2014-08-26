@@ -14,6 +14,7 @@
 @property (nonatomic, weak) RMSTokenView *tokenView;
 @property (nonatomic, weak) UIView *tokenContentView;
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, assign) CGFloat maxHeight;
 
 + (id)manager;
 
