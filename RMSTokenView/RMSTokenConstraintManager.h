@@ -15,8 +15,6 @@
 @property (nonatomic, weak) UIView *tokenContentView;
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
 
-+ (id)manager;
-
 - (void)setupheightConstraintFromOutlet:(NSLayoutConstraint *)heightConstraint;
 - (void)setupContentViewConstraints:(UIView *)contentView;
 - (void)setupLineViewConstraints:(UIView *)lineView;

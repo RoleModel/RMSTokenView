@@ -64,7 +64,7 @@
     _tokenViews = [NSMutableArray array];
     _tokenLines = [NSMutableArray arrayWithObject:[NSMutableArray array]];
     
-    _constraintManager = [RMSTokenConstraintManager manager];
+    _constraintManager = [[RMSTokenConstraintManager alloc] init];
     _constraintManager.tokenView = self;
     
     [self setupViews];

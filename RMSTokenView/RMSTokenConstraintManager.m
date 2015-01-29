@@ -18,14 +18,6 @@ RMSTokenConstraintManager *sharedManager;
 
 @implementation RMSTokenConstraintManager
 
-+ (id)manager {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedManager = [[RMSTokenConstraintManager alloc] init];
-    });
-    return sharedManager;
-}
-
 - (void)setupheightConstraintFromOutlet:(NSLayoutConstraint *)heightConstraint {
     if (!heightConstraint) {
         self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.tokenView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:RMSTokenLineHeight + 1];
