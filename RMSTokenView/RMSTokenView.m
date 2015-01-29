@@ -366,6 +366,7 @@
 - (void)updateConstraints {
     [super updateConstraints];
 
+    self.constraintManager.maxHeight = self.maxHeight;
     [self.constraintManager updateConstraintsForTokenLines:self.tokenLines
                                                andLineView:self.lineView
                                         withTextFieldFocus:[self.textField isFirstResponder]

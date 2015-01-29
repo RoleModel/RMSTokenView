@@ -98,8 +98,15 @@ RMSTokenConstraintManager *sharedManager;
     self.tokenView.contentSize = CGSizeMake(self.tokenView.contentSize.width, topOffset + 9.0);
 
     if (textFieldHasFocus && !isSearching) {
-        if (self.heightConstraint.constant != self.tokenView.contentSize.height) {
-            self.heightConstraint.constant = self.tokenView.contentSize.height;
+        CGFloat contentHeight = self.tokenView.contentSize.height;
+        if (self.heightConstraint.constant != contentHeight) {
+            if (self.maxHeight > 0.0f) {
+                if (contentHeight < self.maxHeight) {
+                    self.heightConstraint.constant = contentHeight;
+                }
+            } else {
+                self.heightConstraint.constant = contentHeight;
+            }
         }
     } else {
         self.heightConstraint.constant = RMSTokenLineHeight + 1.0;
