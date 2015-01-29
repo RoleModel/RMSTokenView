@@ -484,7 +484,6 @@
             for (UIView *tokenView in self.tokenViews) {
                 tokenView.alpha = 0.0;
             }
-            self.textField.alpha = 0.0;
             self.summaryLabel.alpha = 1.0;
 
             [self setNeedsUpdateConstraints];
