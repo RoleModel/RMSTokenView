@@ -419,6 +419,9 @@
 }
 
 - (void)setFrame:(CGRect)frame {
+    if (CGSizeEqualToSize(self.frame.size, frame.size)) {
+        return;
+    }
     [super setFrame:frame];
     [self frameChanged];
 }
