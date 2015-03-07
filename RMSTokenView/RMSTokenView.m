@@ -419,8 +419,10 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    [self frameChanged];
+    if (!CGSizeEqualToSize(self.frame.size, frame.size)) {
+        [super setFrame:frame];
+        [self frameChanged];
+    }
 }
 
 #pragma mark - First Responder
