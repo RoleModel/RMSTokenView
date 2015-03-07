@@ -113,7 +113,7 @@ RMSTokenConstraintManager *sharedManager;
     }
 
 
-    [self.updatingConstraints addObject:[NSLayoutConstraint constraintWithItem:self.tokenContentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.tokenView.contentSize.height]];
+    [self.updatingConstraints addObject:[NSLayoutConstraint constraintWithItem:self.tokenContentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.heightConstraint.constant]];
     [self.updatingConstraints addObject:[NSLayoutConstraint constraintWithItem:self.tokenContentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.tokenView.contentSize.width]];
 
     [self.tokenContentView addConstraints:self.updatingConstraints];
